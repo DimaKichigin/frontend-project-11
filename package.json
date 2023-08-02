@@ -1,0 +1,27 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "[![Actions Status](https://github.com/DimaKichigin/frontend-project-11/workflows/hexlet-check/badge.svg)](https://github.com/DimaKichigin/frontend-project-11/actions)",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch"
+  },
+  "author": "Dima Kichigin",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.8.1",
+    "csv-loader": "^3.0.5",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.3",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "xml-loader": "^1.2.1"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  }
+}
