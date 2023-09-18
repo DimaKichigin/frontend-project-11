@@ -1,5 +1,8 @@
+/* @import "../node_modules/bootstrap/dist/css/bootstrap"; */
 @import "roboto.css";
-@import "~normalize.css" body {
+@import "~normalize.css";
+
+body {
   font-family: "Roboto", sans-serif;
 }
 
@@ -7,6 +10,7 @@
   padding-top: 2rem;
   max-width: 1000px;
   margin: 0 auto;
+  padding-bottom: 2rem;
 }
 
 h1 {
