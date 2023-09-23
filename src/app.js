@@ -117,14 +117,6 @@ export default () => {
     });
 };
 
-
-
-
-
-
-
-
-
 // import 'bootstrap'
 // // import onChange from 'on-change'
 // // import * as yup from 'yap'
@@ -140,13 +132,10 @@ export default () => {
 //    return schema.validate('notOneOf').then(console.log).catch(console.log)
 // }
 
-
 // // Функцию парсинга выношу в отдельный модуль
-// // Отделить renderForm и renderPost 
-
+// // Отделить renderForm и renderPost
 
 // // VIEW
-
 
 // const loadRss = (url, watchedState) => {
 
@@ -155,7 +144,6 @@ export default () => {
 // const updateRss = (watchedState) => {
 
 // }
-
 
 // // app
 
@@ -167,19 +155,16 @@ export default () => {
 //       debug: false,
 //       resourses,
 //    })
-   
-
-
 
 //    // <MODEL>
-   
+
 //    const initialState = {
 //       form: {
 //          state: [
 //             'filling', // процесс заполнения формы
 //             'invalid',
 //             'initial',
-//          ], 
+//          ],
 //          error: null,
 //       },
 //          fields: {
@@ -195,10 +180,9 @@ export default () => {
 //     inputEl: document.querySelector('input[type=number]'),
 //     resetEl: document.querySelector('button')
 
-//  }  
+//  }
 
 // const watchedState = watch(initialState, elements, i18Instance)
-
 
 // // CONTROLLER
 
@@ -211,7 +195,7 @@ export default () => {
 
 // loadRss(url)
 //   // меяняем состояние
-  
+
 // //   render(state, formEl, inputEl, resultEl);
 // render(state, formEl)
 // });

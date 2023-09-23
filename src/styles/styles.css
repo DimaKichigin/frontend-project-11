@@ -2,25 +2,14 @@
 @import "roboto.css";
 @import "~normalize.css";
 
-body {
-  font-family: "Roboto", sans-serif;
+.bi {
+  margin-right: 20px;
 }
 
-.container {
-  padding-top: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding-bottom: 2rem;
+a {
+  text-decoration: none;
 }
 
-h1 {
-  text-align: center;
-}
-
-.logo {
-  background-image: url("../a_ssets/webpack-logo.png");
-  background-size: cover;
-  height: 200px;
-  width: 200px;
-  margin: 0 auto;
+.fw-normal-grey {
+  color: grey;
 }
