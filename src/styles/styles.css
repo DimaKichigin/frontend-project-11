@@ -13,3 +13,7 @@ a {
 .fw-normal-grey {
   color: grey;
 }
+
+.text-muted {
+  color: #6c757d !important;
+}

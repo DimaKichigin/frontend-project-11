@@ -122,14 +122,13 @@ const renderMessage = (elems, message, i18n) => {
   ]);
 };
 
-// const renderView = (ids) => {
-//   ids.forEach((id) => {
-//     // const link = document.querySelector(`[data-id="${id}"]`);
-//     // link.classList.remove("fw-bold");
-//     // link.classList.add("fw-normal-grey");
-//     // link.classList.add('fw-normal', 'fw-normal-grey');
-//   });
-// };
+const renderView = (ids) => {
+  ids.forEach((id) => {
+    const link = document.querySelector(`[data-id="${id}"]`);
+    link.classList.remove('fw-bold');
+    link.classList.add('fw-normal', 'fw-normal-grey');
+  });
+};
 
 const renderModal = (elems, value) => {
   const { title, description, link } = value;
@@ -140,7 +139,7 @@ const renderModal = (elems, value) => {
 
 const changeLng = (elems, value, state, i18n) => {
   const { message, feeds, posts } = state;
-  // const view = state.ui.viewPostsIds;
+  const view = state.ui.viewPostsIds;
   const lngBtn = document.querySelectorAll('.btn-outline-secondary');
   lngBtn.forEach((btn) => btn.classList.remove('active'));
   const activeBtn = document.querySelector(`[data-lng="${value}"]`);
@@ -151,7 +150,7 @@ const changeLng = (elems, value, state, i18n) => {
   if (feeds.length > 0) {
     renderFeeds(elems, feeds, i18n);
     renderPosts(elems, posts, i18n);
-    // renderView(posts, view);
+    renderView(posts, view);
   }
 };
 
@@ -193,9 +192,9 @@ export default (state, i18n) => (path, value) => {
       renderPosts(elements, value, i18n);
       break;
 
-      // case 'ui.viewPostsIds':
-      //   renderView(value);
-      //   break;
+    case 'ui.viewPostsIds':
+      renderView(value);
+      break;
 
     case 'feeds':
       renderFeeds(elements, value, i18n);
