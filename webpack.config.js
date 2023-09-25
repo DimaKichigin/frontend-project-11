@@ -1,21 +1,21 @@
-const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
+const path = require("path");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
+const TerserWebpackPlugin = require("terser-webpack-plugin");
 // const regeneratorRuntime = require('regenerator-runtime');
 // const loader = require('sass-loader');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
 
 const optimization = () => {
   const config = {
     splitChunks: {
-      chunks: 'all',
+      chunks: "all",
     },
   };
   if (isProd) {
@@ -38,7 +38,7 @@ const cssLoaders = (extra) => {
         // reloadAll: true,
       },
     },
-    'css-loader',
+    "css-loader",
   ];
 
   if (extra) {
@@ -49,7 +49,7 @@ const cssLoaders = (extra) => {
 
 const babelOptions = (preset) => {
   const opts = {
-    presets: ['@babel/preset-env'],
+    presets: ["@babel/preset-env"],
   };
   if (preset) {
     opts.presets.push(preset);
@@ -72,7 +72,7 @@ const babelOptions = (preset) => {
 const plugins = () => {
   const base = [
     new HTMLWebpackPlugin({
-      template: './index.html',
+      template: "./index.html",
       minify: {
         collapseWhitespace: isProd,
       },
@@ -81,13 +81,13 @@ const plugins = () => {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'src/favicon.ico'),
-          to: path.resolve(__dirname, 'dist'),
+          from: path.resolve(__dirname, "src/favicon.ico"),
+          to: path.resolve(__dirname, "dist"),
         },
       ],
     }),
     new MiniCssExtractPlugin({
-      filename: filename('css'),
+      filename: filename("css"),
     }),
   ];
 
@@ -98,21 +98,19 @@ const plugins = () => {
 };
 
 module.exports = {
-  context: path.resolve(__dirname, 'src'),
-  mode: 'development',
+  context: path.resolve(__dirname, "src"),
+  mode: "development",
   entry: {
-    main: ['@babel/polyfill', './index.js'],
-  }, // откуда начинаем
+    main: ["@babel/polyfill", "./index.js"],
+  },
   output: {
-    // куда складываем результаты работы
-    filename: filename('js'),
-    path: path.resolve(__dirname, 'dist'),
+    filename: filename("js"),
+    path: path.resolve(__dirname, "dist"),
   },
   resolve: {
-    extensions: ['.js', '.json', '.png'],
+    extensions: [".js", ".json", ".png"],
     alias: {
-      '@m_odels': path.resolve(__dirname, 'src/m_odels'),
-      '@': path.resolve(__dirname, 'src'),
+      "@": path.resolve(__dirname, "src"),
     },
   },
   optimization: optimization(),
@@ -120,7 +118,7 @@ module.exports = {
     port: 4200,
     hot: isDev,
   },
-  devtool: isDev ? 'source-map' : 'eval',
+  devtool: isDev ? "source-map" : "eval",
   plugins: plugins(),
   module: {
     rules: [
@@ -130,34 +128,34 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use: cssLoaders('less-loader'),
+        use: cssLoaders("less-loader"),
       },
       {
         test: /\.s[ac]ss$/,
-        use: cssLoaders('sass-loader'), // +'css-loader',
+        use: cssLoaders("sass-loader"),
       },
       {
         test: /\.(png|jpg|svg|gif)$/,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
       {
         test: /\.xml$/,
-        use: ['xml-loader'],
+        use: ["xml-loader"],
       },
       {
         test: /\.csv$/,
-        use: ['csv-loader'],
+        use: ["csv-loader"],
       },
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: "babel-loader",
             options: babelOptions(),
           },
         ],
@@ -167,33 +165,18 @@ module.exports = {
         test: /\.m?ts$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: babelOptions('@babel/preset-typescript'),
+          loader: "babel-loader",
+          options: babelOptions("@babel/preset-typescript"),
         },
       },
       {
         test: /\.m?jsx$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: babelOptions('@babel/preset-react'),
+          loader: "babel-loader",
+          options: babelOptions("@babel/preset-react"),
         },
       },
     ],
   },
 };
-
-// // mode – режим сборки: development или production;
-// entry – точка входа (src/index.js);
-// output — каталог, куда собирается проект (dist);
-// devServer — настройки для локального сервера;
-// plugins — используемые плагины. Сюда добавляются объекты — экземпляры класса,
-// которые импортируются из плагина
-// (импорт происходит выше). Плюс, здесь прописываются параметры для плагинов.
-// Это все указывается в документации к плагинам;
-// module — модули, обеспечивающие работу с разными форматами файлов.
-// Свойство rules содержит список объектов с двумя обязательными свойствами:
-// test – регулярные выражения, выбирающие необходимые файлы;
-// use – массив объектов. Загрузчики (loader) и их опции.
-// Если загрузчики без опций, то можно их просто перечислить
-// в свойстве use в виде массива строк.
